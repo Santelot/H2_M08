@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .banner {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .banner .title {
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+        }
+        .banner .subtitle {
+            font-size: 1em;
+            margin-top: 5px;
+            border-top: 1px solid white;
+            padding-top: 5px;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 15px;
+        }
+        .step-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        .section-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: right;
+        }
+        .dialogue {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: right;
+            font-style: italic;
+        }
+        .dropdown {
+            margin-bottom: 20px;
+        }
+        .dropdown select {
+            font-size: 1em;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        .time-title {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+    </style>
+    <script>
+        function updateActivities() {
+            var selectedTime = document.getElementById('time-select').value;
+            var activities = document.getElementsByClassName('activity');
+
+            document.getElementById('selected-time').innerText = "Tiempo efectivo de clase: " + selectedTime + " minutos";
+
+            for (var i = 0; i < activities.length; i++) {
+                activities[i].style.display = 'block';
+            }
+
+            if (selectedTime === '45') {
+                document.getElementById('activity-2').style.display = 'none';
+            } else if (selectedTime === '40') {
+                document.getElementById('activity-2').style.display = 'none';
+                document.getElementById('activity-4').style.display = 'none';
+            }
+        }
+
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="header">
+    <h1>Playbook - H2 - M08</h1>
+</div>
+
+<div class="container">
+    <div class="dropdown">
+        <label for="time-select">Tiempo efectivo de Clase:</label>
+        <select id="time-select" onchange="updateActivities()">
+            <option value="50">50 minutos</option>
+            <option value="45">45 minutos</option>
+            <option value="40">40 minutos</option>
+        </select>
+    </div>
+
+    <h2 id="selected-time" class="time-title">Tiempo efectivo de clase: 50 minutos</h2>
+
+<!-- Actividad 1 (4 pasos) -->
+<div id="activity-1" class="activity">
+    <div class="banner" onclick="toggleContent('saludo_gnius_club')">
+        <div class="title">
+            <span>👋 Actividad 1: Saludo y Ritual Gnius Club (4 pasos)</span>
+            <span>⏰ Tiempo: 2.5 minutos</span>
+        </div>
+        <div class="subtitle">Saludo y preparación para la misión.</div>
+    </div>
+    <div id="saludo_gnius_club" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar Diapositiva 2 "Bienvenida".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Hola, Genios. Hoy vamos a continuar desarrollando nuestra app de lista de tareas en Glide, aplicando los diseños que crearon en papel la clase pasada. Vamos a usar los componentes disponibles en Glide para que sus apps sean funcionales y fáciles de usar. ¡Manos a la obra!</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Proyectar Diapositiva 3 "¿Cómo Están?".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Antes de empezar, quiero saber cómo se sienten hoy. Si están emocionados por trabajar en sus apps, levanten una mano. Si necesitan un poco de energía extra, crucen los brazos. Vamos a ver cómo está la clase.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (0.5 minutos): Proyectar Diapositiva 4 "Gracias por Asistir".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Como siempre, juntemos nuestras manos en agradecimiento por estar aquí y tener la oportunidad de continuar mejorando nuestras habilidades. Gracias por asistir a esta misión, Genios.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (0.5 minutos): Proyectar Diapositiva 5 "Objetivos de la Misión".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Hoy tenemos dos objetivos: 1.- Aplicar sus diseños en Glide para crear una app funcional. 2.- Ajustar los componentes visuales para que su app sea fácil de usar y atractiva para los usuarios. ¡Vamos a hacerlo!</div>
+        </div>
+    </div>
+</div>
+
+<!-- Actividad 2 (3 pasos) -->
+<div id="activity-2" class="activity">
+    <div class="banner" onclick="toggleContent('state_change')">
+        <div class="title">
+            <span>🔄 Actividad 2: State Change (3 pasos)</span>
+            <span>⏰ Tiempo: 3 minutos</span>
+        </div>
+        <div class="subtitle">Dibujo creativo y reflexión.</div>
+    </div>
+    <div id="state_change" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (1 minuto): Proyectar Diapositiva 6 "Dibuja un Celular Futurista".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Genios, vamos a tomar un breve descanso creativo. Esta vez quiero que dibujen cómo creen que será un celular del futuro. Piensen en las funciones que podría tener, en su diseño, y en cómo podría cambiar la forma en que lo usamos. No se preocupen por los detalles, solo dejen volar su imaginación.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (2 minutos): Proyectar Diapositiva 7 con cronómetro de 2 minutos.</div>
+            <div class="section-title">Acción</div>
+            <div class="dialogue">N/A</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (0.5 minutos): Proyectar Diapositiva 8 "Reflexión sobre el Doodle Futurista".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Los diseños futuristas nos permiten pensar en cómo la tecnología podría evolucionar. Hoy estamos trabajando con apps sencillas, pero quizás lo que imaginaron se convierta en realidad en unos años.</div>
+        </div>
+    </div>
+</div>
+
+<!-- Actividad 3 (4 pasos) -->
+<div id="activity-3" class="activity">
+    <div class="banner" onclick="toggleContent('team_gnius')">
+        <div class="title">
+            <span>👥 Actividad 3: Team Gnius (4 pasos)</span>
+            <span>⏰ Tiempo: 3 minutos</span>
+        </div>
+        <div class="subtitle">Organización en equipos.</div>
+    </div>
+    <div id="team_gnius" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar Diapositiva 9 "Reúnanse en sus Equipos".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Genios, es momento de volver a trabajar en los mismos equipos que formaron la clase pasada. Nos vamos a organizar para continuar desarrollando nuestras apps, así que, por favor, junten sus equipos.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Proyectar Diapositiva 10 con cronómetro de 1 minuto.</div>
+            <div class="section-title">Acción</div>
+            <div class="dialogue">N/A</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (0.5 minutos): Proyectar Diapositiva 11 "Vayan por sus Magic Tablets".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Ahora, un representante de cada equipo, por favor, pase al frente a recoger una Magic Tablet para que podamos comenzar a trabajar en Glide. ¡Vamos a aprovechar el tiempo!</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (1 minuto): Proyectar Diapositiva 12 con cronómetro de 1 minuto.</div>
+            <div class="section-title">Acción</div>
+            <div class="dialogue">N/A</div>
+        </div>
+    </div>
+</div>
+
+<!-- Actividad 4 (6 pasos) -->
+<div id="activity-4" class="activity">
+    <div class="banner" onclick="toggleContent('challenge')">
+        <div class="title">
+            <span>🏆 Actividad 4: Challenge (6 pasos)</span>
+            <span>⏰ Tiempo: 38.5 minutos</span>
+        </div>
+        <div class="subtitle">Diseño y ajuste de pantallas en Glide.</div>
+    </div>
+    <div id="challenge" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (1 minuto): Proyectar Diapositiva 13 "Desafío: Diseñar y Ajustar Pantallas en Glide".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Genios, ha llegado el momento de transformar sus diseños en papel en pantallas reales. Tienen 30 minutos para crear y ajustar las pantallas de su app en Glide. Usen los componentes que han aprendido: listas, botones, formularios, etc. Prueben distintas configuraciones y diseños para que su app sea lo más funcional y atractiva posible.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (30 minutos): Proyectar Diapositiva 14 con cronómetro de 30 minutos.</div>
+            <div class="section-title">Acción</div>
+            <div class="dialogue">N/A</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (1 minuto): Proyectar Diapositiva 15 "Comparen sus Diseños".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Ahora que han terminado de diseñar sus pantallas, reúnanse en los equipos de 4 con los que diseñaron los datos de la app. Tienen 5 minutos para comparar los diseños entre sí. De esta forma, podrán ver cómo cada uno organizó la misma información de manera distinta. Esto les ayudará a obtener nuevas ideas y perfeccionar su app.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (5 minutos): Proyectar Diapositiva 16 con cronómetro de 5 minutos.</div>
+            <div class="section-title">Acción</div>
+            <div class="dialogue">N/A</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 5 (0.5 minutos): Proyectar Diapositiva 17 "Revisión de Objetivos".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Hoy logramos personalizar el diseño de nuestras apps en Glide y aprendimos a ajustar los componentes visuales para mejorar la experiencia del usuario. ¡Gran trabajo, Genios!</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 6 (0.5 minutos): Proyectar Diapositiva 18 "You've Got Mon-e".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Por su excelente trabajo y dedicación en esta misión, ¡todos ustedes ganan Mon-e! Sigan así, su esfuerzo realmente está dando frutos.</div>
+        </div>
+    </div>
+</div>
+
+<!-- Actividad 5 (1 paso) -->
+<div id="activity-5" class="activity">
+    <div class="banner" onclick="toggleContent('honor_dojo')">
+        <div class="title">
+            <span>🏆 Actividad 5: Honor The Dojo (1 paso)</span>
+            <span>⏰ Tiempo: 1 minuto</span>
+        </div>
+        <div class="subtitle">Honrar el espacio donde trabajamos.</div>
+    </div>
+    <div id="honor_dojo" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (1 minuto): Proyectar Diapositiva 19 "Honor The Dojo".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Genios, ha llegado el momento de honrar el espacio donde trabajamos. Por favor, todos los equipos reúnan sus Magic Tablets y traigan todo al frente. Mantengamos nuestro espacio ordenado y listo para la próxima misión.</div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+</body>
+</html>
